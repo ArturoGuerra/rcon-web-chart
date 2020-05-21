@@ -1,0 +1,14 @@
+{{- if and .Values.persistence.enabled (not .Values.persistence.storage) }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: {{ template "pvc" . }}
+    annotations:
+        helm.sh/resource-policy: keep
+spec:
+    accessModes:
+        - {{ .Values.persistence.accessMode }}
+    resources:
+        requests:
+            storage: {{ .Values.persistence.storage }}
+{{- end }}

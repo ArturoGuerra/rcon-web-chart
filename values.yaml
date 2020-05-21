@@ -1,0 +1,24 @@
+# Default values for rcon-web.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: itzg/rcon
+  tag: latest
+
+service:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+    - name: http
+      port: 80
+      targetPort: 4326
+    - name: websocket
+      port: 4327
+      targetPort: 4327
+
+persistence:
+  enabled: true
+  storage: 5G
+  accessMode: ReadWriteOnce
+  # existingClaim: "Claim Name"
