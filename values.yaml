@@ -18,7 +18,6 @@ service:
       targetPort: 4327
 
 persistence:
-  enabled: true
-  storage: 5G
+  storage: 5Gi
   accessMode: ReadWriteOnce
-  # existingClaim: "Claim Name"
+  existingClaim: ""
